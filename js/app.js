@@ -8,7 +8,7 @@ function createTodoItem(title) {
     label.innerText = title;
 
     const editInput = document.createElement('input');
-    editInput.className = 'todo_item__textfield';
+    editInput.className = 'todo_item__text';
     editInput.type = 'text';
 
     const editButton = document.createElement('button');
@@ -28,8 +28,6 @@ function createTodoItem(title) {
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
 
-    console.log(listItem);
-
     return listItem;
 }
 
@@ -39,7 +37,9 @@ function addTodoItem(e) {
     if(addInput.value === '') {
         return alert('Необходимо ввести название задачи.');
     } else {
-        const listItem = createTodoItem(addInput.value);
+        const todoItem = createTodoItem(addInput.value);
+        todoList.appendChild(todoItem);
+        addInput.value = '';
     }
 }
 

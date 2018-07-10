@@ -112,7 +112,7 @@ button .material_icons {
     margin-right: .5rem;
 }
 .todo_item__title,
-.todo_item__textfield {
+.todo_item__text {
     margin-right: auto;
 }
 .todo_item.completed .todo_item__title {
@@ -121,10 +121,10 @@ button .material_icons {
 .todo_item.editing .todo_item__title {
     display: none;
 }
-.todo_item__textfield {
+.todo_item__text {
     display: none;
 }
-.todo_item.editing .todo_item__textfield {
+.todo_item.editing .todo_item__text {
     display: block;
 }
 .todo_item button {
