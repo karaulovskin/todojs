@@ -28,7 +28,19 @@ function createTodoItem(title) {
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
 
+    bindEvent(listItem);
+
     return listItem;
+}
+
+function bindEvent(todoItem) {
+    const checkbox = todoItem.querySelector('.todo_item__checkbox');
+    const editButton = todoItem.querySelector('.todo_item__edit');
+    const deleteButton = todoItem.querySelector('.todo_item__delete');
+
+    checkbox.addEventListener('change', toggleTodoItem);
+    editButton.addEventListener('click', editTodoItem);
+    deleteButton.addEventListener('click', deleteTodoItem);
 }
 
 function addTodoItem(e) {
