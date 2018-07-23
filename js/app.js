@@ -55,6 +55,33 @@ function addTodoItem(e) {
     }
 }
 
+function toggleTodoItem() {
+    const listItem = this.parentNode;
+    listItem.classList.toggle('completed');
+}
+
+function editTodoItem() {
+    const listItem = this.parentNode;
+    const title = listItem.querySelector('.todo_item__title');
+    const editInput = listItem.querySelector('.todo_item__text');
+    const isEditing = listItem.classList.contains('editing');
+
+    if (isEditing) {
+        title.innerText = editInput.value;
+        this.innerText = 'Изменить';
+    } else {
+        editInput.value = title.innerText;
+        this.innerText = 'Сохранить';
+    }
+
+    listItem.classList.toggle('editing');
+}
+
+function deleteTodoItem() {
+    const listItem = this.parentNode;
+    todoList.removeChild(listItem);
+}
+
 const todoForm = document.getElementById('todo_form');
 const addInput = document.getElementById('add_input');
 const todoList = document.getElementById('todo_list');
