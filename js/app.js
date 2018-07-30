@@ -1,6 +1,10 @@
 function createElement(tag, props, ...children) {
-     const element = document.createElement(tag);
-    Object.key(props).forEach(key => element[key] = prop[key]);
+    const element = document.createElement(tag);
+    Object.keys(props).forEach(key => element[key] = props[key]);
+
+    console.log(children);
+
+    return element;
 }
 
 function createTodoItem(title) {
