@@ -7,11 +7,11 @@ function createTodoItem(title) {
     const checkbox = createElement('input', { type: 'checkbox', className: 'todo_item__checkbox' });
     const label = createElement('label', { className: 'todo_item__title', title });
     const editInput = createElement('input', { type: 'text', className: 'todo_item__text' });
-    const editButton = createElement('button', { className: 'todo_item__edit',} 'Изменить' );
-    const deleteButton = createElement('button', { className: 'todo_item__delete',} 'Удалить' );
+    const editButton = createElement('button', { className: 'todo_item__edit' }, 'Изменить' );
+    const deleteButton = createElement('button', { className: 'todo_item__delete' }, 'Удалить' );
     const listItem = document.createElement('li', { className: 'todo_item' }, checkbox, label, editInput, editButton, deleteButton);
 
-    bindEvent(listItem);
+    bindEvents(listItem);
 
     return listItem;
 }
