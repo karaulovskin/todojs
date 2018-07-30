@@ -2,18 +2,25 @@ function createElement(tag, props, ...children) {
     const element = document.createElement(tag);
     Object.keys(props).forEach(key => element[key] = props[key]);
 
-    console.log(children);
+    if (children.length > 0) {
+        children.forEach(child => {
+           if (typeof child === 'string') {
+               child = document.createTextNode(child);
+           }
+           element.appendChild(child);
+        });
+    }
 
     return element;
 }
 
 function createTodoItem(title) {
     const checkbox = createElement('input', { type: 'checkbox', className: 'todo_item__checkbox' });
-    const label = createElement('label', { className: 'todo_item__title', title });
+    const label = createElement('label', { className: 'todo_item__title'}, title );
     const editInput = createElement('input', { type: 'text', className: 'todo_item__text' });
     const editButton = createElement('button', { className: 'todo_item__edit' }, 'Изменить' );
     const deleteButton = createElement('button', { className: 'todo_item__delete' }, 'Удалить' );
-    const listItem = document.createElement('li', { className: 'todo_item' }, checkbox, label, editInput, editButton, deleteButton);
+    const listItem = createElement('li', { className: 'todo_item' }, checkbox, label, editInput, editButton, deleteButton);
 
     bindEvents(listItem);
 
@@ -33,7 +40,7 @@ function bindEvents(todoItem) {
 function addTodoItem(e) {
     e.preventDefault();
 
-    if(addInput.value === '') {
+    if (addInput.value === '') {
         return alert('Необходимо ввести название задачи.');
     } else {
         const todoItem = createTodoItem(addInput.value);
